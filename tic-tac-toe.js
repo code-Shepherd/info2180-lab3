@@ -44,7 +44,7 @@ window.onload = function() {
                     elem[2].innerHTML=="X" && elem[5].innerHTML=="X" && elem[8].innerHTML=="X" || 
                     elem[2].innerHTML=="X" && elem[4].innerHTML=="X" && elem[6].innerHTML=="X" || 
                     elem[0].innerHTML=="X" && elem[4].innerHTML=="X" && elem[8].innerHTML=="X" ){
-                    stat.innerHTML='Congratulations! X Wins!"'
+                    stat.innerHTML='Congratulations! X is the Winner!"'
                     stat.classList.add('you-won');
 
                 }
@@ -57,7 +57,7 @@ window.onload = function() {
                     elem[2].innerHTML=="O" && elem[5].innerHTML=="O" && elem[8].innerHTML=="O" ||
                     elem[2].innerHTML=="O" && elem[4].innerHTML=="O" && elem[6].innerHTML=="O" ||
                     elem[0].innerHTML=="O" && elem[4].innerHTML=="O" && elem[8].innerHTML=="O" ){
-                    stat.innerHTML='Congratulations! O Wins!"'
+                    stat.innerHTML='Congratulations! O is the Winner!"'
                     stat.classList.add('you-won');
                     
             
