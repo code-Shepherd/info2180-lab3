@@ -8,3 +8,64 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const squares = document.querySelectorAll('#board div');
+    let currentPlayer = 'X'; // Initialize the current player as 'X'
+  
+    // Initialize an empty game state array
+    const gameState = ['', '', '', '', '', '', '', '', ''];
+  
+    // Function to handle square click
+    function handleSquareClick(event) {
+      const square = event.target;
+      const squareIndex = Array.from(squares).indexOf(square);
+  
+      // Check if the square is empty and the game is not won
+      if (gameState[squareIndex] === '' && !checkGameWin()) {
+        gameState[squareIndex] = currentPlayer;
+        square.classList.add(currentPlayer);
+        square.textContent = currentPlayer;
+  
+        // Toggle to the other player (X or O)
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  
+        // Check for a win after each move
+        if (checkGameWin()) {
+          document.getElementById('status').textContent = `Player ${currentPlayer} wins! 🎉`;
+          document.getElementById('status').classList.add('you-won');
+        }
+      }
+    }
+  
+    // Add click event listener to each square
+    squares.forEach((square) => {
+      square.addEventListener('click', handleSquareClick);
+    });
+  
+    // Function to check if the game has been won
+    function checkGameWin() {
+      // Define winning combinations
+      const winCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+  
+      // Check if any winning combination is achieved
+      for (const combo of winCombos) {
+        const [a, b, c] = combo;
+        if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+          return true;
+        }
+      }
+  
+      return false;
+    }
+  });
+  
